@@ -1,4 +1,4 @@
 
 getGreaterOrLowerOrIntersectingElements is a static method which returns greater or lower or intersecting elements based on given command.
 
-This line is just a test. 
+[![Build Status](https://travis-ci.com/BerkKaraaslan/Homework1.svg?branch=main)](https://travis-ci.com/BerkKaraaslan/Homework1)
