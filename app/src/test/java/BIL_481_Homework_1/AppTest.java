@@ -52,6 +52,11 @@ class AppTest {
         assertArrayEquals(new double[] {72.1431,0}, App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {300.786, -18,0}, new double[] {5.7864}, new double[] {}, 2));
     }
 
+    @Test
+    public void ValidParameters2(){
+        assertArrayEquals(new double[] {0,10}, App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {-30,10,20}, new double[] {-10,-20,0}, new double[] {30}, 5));
+    }
+
 
 
 
