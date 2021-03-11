@@ -127,7 +127,7 @@ public class App {
             kth = result_array[1];
 
             map.put("mean", "mean is "+mean);
-            map.put("kth", "K'th order statistic is "+kth);
+            map.put("kth", k + "'th order statistic is "+kth);
           }
           else{
             map.put("mean", "Parameters are incorrect.");
