@@ -3,6 +3,8 @@
  */
 package BIL_481_Homework_1;
 
+import java.util.Arrays;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
@@ -12,28 +14,6 @@ public class App {
         System.out.println(new App().getGreeting());
     }
 
-    
-    public static double[] getGreaterOrLowerOrIntersectingElements(double [] array1 , double [] array2 , Double d , String command){
-
-        /*
-            This method finds the elements that are greater or less than the element d according to the given command.
-            If command is "greater" then this method finds and returns elements that are greater than d.
-            If command is "lower" then this method finds and returns elements that are less than d.
-            If command is "intersection" then this method finds and returns elements that are in both array1 and array2. In this case parameter d is meaningless.
-            If an error is occur or some parameters are invalid then this method returns null. 
-
-        */
-
-
-
-        if(array1 == null)
-            return null;
-
-
-        return null;
-    }
-
-    
 
     public static double[] concatenateArraysAndReturnMeanAndKthOrderStatistics (double [] array1, double [] array2, double [] array3, Integer k){
 
@@ -46,11 +26,49 @@ public class App {
         */
 
 
+        if(array1 == null || array2 == null || array3 == null || k == null ){ // check null parameters 
+            return null;
+        }
+
+        if(k > (array1.length + array2.length + array3.length) || k <=0){ // k must be >=1 and <= sum of the all arrays lengths
+            return null;
+        }
+
+        double[] big_array = new double[array1.length + array2.length + array3.length];
+
+        double mean =0;
+
+        for(int i=0;i<array1.length;i++){
+            big_array[i] = array1[i];
+            mean +=array1[i];
+        }
+        
+        for(int i=0;i<array2.length;i++){
+            big_array[array1.length + i] = array2[i];
+            mean +=array2[i];
+        }
+
+        for(int i=0;i<array3.length;i++){
+            big_array[array1.length + array2.length + i] = array3[i];
+            mean += array3[i];
+        }
+        
+        mean = mean / (array1.length + array2.length + array3.length);
+
+        double k_statistic = 0;
+
+        Arrays.sort(big_array);
+
+        k_statistic = big_array[k-1];
+
+        double[] result_array = new double[2];
+
+        result_array[0] = mean;
+        result_array[1] = k_statistic;
 
 
 
-
-        return null;
+        return result_array;
     }
 
 
