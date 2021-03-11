@@ -12,19 +12,46 @@ class AppTest {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 
-    /*
-    @Test 
-    public void NullArray1(){
-        assertNull(App.getGreaterOrLowerOrIntersectingElements(null, null, 15.0, "asd"));
-    }
+   
 
-    */
-
-    
     @Test
-    public void NullArray1(){
-        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(null, null, null, 0));
+    public void NullArrays(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(null, null, null, 5));
     }
+
+    @Test
+    public void NullArray(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {3.14, 2.879,14}, null, new double[] {7.5,36.98,36.9}, 2));
+    }
+
+    @Test
+    public void EmptyArrays(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {}, new double[] {}, new double[] {}, 3));
+    }
+
+
+
+    @Test
+    public void NegativeK(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {1,2,5.0}, new double[] {10,20,30}, new double[] {10, 76.58}, -1));
+    }
+
+    @Test
+    public void TooBigK(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {1,2,5.0}, new double[] {10,20,30}, new double[] {10, 76.58}, 10));
+    }
+
+    @Test
+    public void NullK(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {1,2,5.0}, new double[] {10,20,30}, new double[] {10, 76.58}, null));
+    }
+
+
+    @Test
+    public void ValidParameters(){
+        assertArrayEquals(new double[] {72.1431,0}, App.concatenateArraysAndReturnMeanAndKthOrderStatistics(new double[] {300.786, -18,0}, new double[] {5.7864}, new double[] {}, 2));
+    }
+
 
 
 
