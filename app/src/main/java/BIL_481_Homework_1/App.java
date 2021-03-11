@@ -12,7 +12,7 @@ public class App {
         System.out.println(new App().getGreeting());
     }
 
-
+    
     public static double[] getGreaterOrLowerOrIntersectingElements(double [] array1 , double [] array2 , Double d , String command){
 
         /*
@@ -32,5 +32,29 @@ public class App {
 
         return null;
     }
+
+    
+
+    public static double[] concatenateArraysAndReturnMeanAndKthOrderStatistics (double [] array1, double [] array2, double [] array3, Integer k){
+
+        /*
+            This method concatenates and sort given arrays(array1, array2 and array3) and returns a double array whose length is 2.
+            First element of the result array is mean of this array.
+            Second element of the result array is k'th order statistic of this larger array.
+            If an error is occur or some parameters are invalid then this method returns null.
+
+        */
+
+
+
+
+
+
+        return null;
+    }
+
+
+
+
 
 }

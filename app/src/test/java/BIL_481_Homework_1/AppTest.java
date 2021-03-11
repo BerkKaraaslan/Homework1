@@ -12,10 +12,20 @@ class AppTest {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 
-
+    /*
     @Test 
     public void NullArray1(){
         assertNull(App.getGreaterOrLowerOrIntersectingElements(null, null, 15.0, "asd"));
     }
+
+    */
+
+    
+    @Test
+    public void NullArray1(){
+        assertNull(App.concatenateArraysAndReturnMeanAndKthOrderStatistics(null, null, null, 0));
+    }
+
+
 
 }
