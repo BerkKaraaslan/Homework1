@@ -5,14 +5,170 @@ package BIL_481_Homework_1;
 
 import java.util.Arrays;
 
+import static spark.Spark.get;
+import static spark.Spark.port;
+import static spark.Spark.post;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import spark.ModelAndView;
+import spark.template.mustache.MustacheTemplateEngine;
+
+
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+      //  System.out.println(new App().getGreeting());
+
+        port(getHerokuAssignedPort());
+
+        get("/", (req, res) -> "Hello, World");
+
+        post("/compute", (req, res) -> {
+          
+
+
+            Map<String, String> map = new HashMap<String, String>();
+
+            try{
+
+
+
+
+
+          String input1 = req.queryParams("input1");
+          java.util.Scanner sc1 = new java.util.Scanner(input1);
+          sc1.useDelimiter("[;\r\n]+");
+          java.util.ArrayList<Double> inputList1 = new java.util.ArrayList<>();
+          while (sc1.hasNext())
+          {
+            double value = Double.parseDouble(sc1.next().replaceAll("\\s",""));
+            inputList1.add(value);
+          }
+          sc1.close();
+          System.out.println(inputList1);
+
+          double[] input1_array = new double[inputList1.size()];
+
+          for(int i=0;i<input1_array.length;i++)
+            input1_array[i] = inputList1.get(i);
+
+
+          String input2 = req.queryParams("input2");
+          java.util.Scanner sc2 = new java.util.Scanner(input2);
+          sc2.useDelimiter("[;\r\n]+");
+          java.util.ArrayList<Double> inputList2 = new java.util.ArrayList<>();
+          while (sc2.hasNext())
+          {
+            double value = Double.parseDouble(sc2.next().replaceAll("\\s",""));
+            inputList2.add(value);
+          }
+          sc2.close();
+          System.out.println(inputList2);
+
+          double[] input2_array = new double[inputList2.size()];
+
+          for(int i=0;i<input2_array.length;i++)
+            input2_array[i] = inputList2.get(i);
+
+
+          String input3 = req.queryParams("input3");
+          java.util.Scanner sc3 = new java.util.Scanner(input3);
+          sc3.useDelimiter("[;\r\n]+");
+          java.util.ArrayList<Double> inputList3 = new java.util.ArrayList<>();
+          while (sc3.hasNext())
+          {
+            double value = Double.parseDouble(sc3.next().replaceAll("\\s",""));
+            inputList3.add(value);
+          }
+          sc3.close();
+          System.out.println(inputList3);
+
+          double[] input3_array = new double[inputList3.size()];
+
+          for(int i=0;i<input3_array.length;i++)
+            input3_array[i] = inputList3.get(i);
+
+
+          String input4 = req.queryParams("input4").replaceAll("\\s","");
+          int input4AsInt = Integer.parseInt(input4);
+
+          Integer k = input4AsInt;
+
+
+          double[] result_array = App.concatenateArraysAndReturnMeanAndKthOrderStatistics(input1_array, input2_array, input3_array, k);
+          
+          double mean =0;
+          double kth =0;
+          
+          
+          
+          
+        //  boolean result = true;
+
+        /*
+          String input2 = req.queryParams("input2").replaceAll("\\s","");
+          int input2AsInt = Integer.parseInt(input2);
+          
+          boolean result = App.search(inputList1, input2AsInt);
+          */
+
+
+        //  Map<String, String> map = new HashMap<String, String>();
+          if(result_array != null){
+
+            mean = result_array[0];
+            kth = result_array[1];
+
+            map.put("mean", "mean is "+mean);
+            map.put("kth", "K'th order statistic is "+kth);
+          }
+          else{
+            map.put("mean", "Parameters are incorrect.");
+            map.put("kth", "Please try again with valid parameters. ");
+          }
+
+        }
+        catch(Exception e){
+
+            map.put("mean", "Parameters are incorrect.");
+            map.put("kth", "Please try again with valid parameters. ");
+
+        }
+
+
+
+
+          return new ModelAndView(map, "compute.mustache");
+        }, new MustacheTemplateEngine());
+
+
+        get("/compute",
+        (rq, rs) -> {
+          Map<String, String> map = new HashMap<String, String>();
+          map.put("mean", "Not computed yet!");
+          return new ModelAndView(map, "compute.mustache");
+        },
+        new MustacheTemplateEngine());
+}
+
+static int getHerokuAssignedPort() {
+    ProcessBuilder processBuilder = new ProcessBuilder();
+    if (processBuilder.environment().get("PORT") != null) {
+        return Integer.parseInt(processBuilder.environment().get("PORT"));
     }
+    return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+}
+
+
+
+    
 
 
     public static double[] concatenateArraysAndReturnMeanAndKthOrderStatistics (double [] array1, double [] array2, double [] array3, Integer k){

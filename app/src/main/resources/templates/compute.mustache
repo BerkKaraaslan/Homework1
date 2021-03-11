@@ -1,0 +1,36 @@
+<title>My First Web Application</title>
+  <h1>Welcome to my application!</h1>
+
+  Application Description:
+  <br>
+  -This method concatenates given arrays and computes mean of the larger (concatenated) array and returns both mean and k'th order statistic of the larger array.
+  <br>
+  -In the ascending sorted array k'th order statistic means k'th smallest element.
+  <br>
+  <br>
+
+  User Guide:
+  <br>
+  * First, second and third form represents array1, array2 and array3 respectively.
+  <br>
+  * In the first, second and third form, enter a list of doubles seperated by a newline character.
+  <br>
+  * Fourth form represents k.
+  <br>
+  * In the fourth form enter an integer. ( k must be >0 and < sum of all arrays lengths)
+  <br>
+  * If parameters are valid, then mean of the larger array and k'th order statistic of the larger array will be printed. 
+  <br>
+  <br>
+
+    {{mean}}
+    {{kth}}
+
+  <form action="compute" method="post">
+        <textarea name="input1" rows="10" cols="30"></textarea>
+        <textarea name="input2" rows="10" cols="30"></textarea>
+        <textarea name="input3" rows="10" cols="30"></textarea>
+        <textarea name="input4" rows="10" cols="30"></textarea>
+        <br>
+        <input type="submit">
+  </form>
